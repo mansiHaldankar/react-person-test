@@ -5,7 +5,7 @@ import Radium from 'radium';
 const Person = (props) => {
     const personStyle = {
         '@media (max-width : 450px)' : {
-                width: '20%'
+                width: '90%'
             }
     }
 return(
