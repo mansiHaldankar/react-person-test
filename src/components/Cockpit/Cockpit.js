@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Radium, { StyleRoot } from 'radium';
 
 import './Cockpit.css';
 
 const Cockpit = (props) => {
+
+    useEffect(() => {
+        console.log("In Cockpit.js")
+        setTimeout(() => {
+            alert("Saved data");
+        },1000);
+        return () => {
+            console.log("useEffect1 cleanup");
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log("2nd Cockpit");
+        return () => {
+            console.log("use effect 2 cleanup");
+        }
+    })
+
     const style = {
         backgroundColor : 'green',
         color : 'white',

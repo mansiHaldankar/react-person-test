@@ -14,7 +14,8 @@ class App extends Component {
       { id : "person2", name : "Prathamesh", age : "32" },
       { id : "person3", name : "ManPrat", age : "5" },
     ],
-    showPerson : false
+    showPerson : false,
+    showCockpit : true
   }
 
   static getDerivedStateFromProps(state,props){
@@ -68,6 +69,10 @@ class App extends Component {
       this.setState({showPerson : !displayPerson});
   }
 
+  toggleCockpit = () => {
+      this.setState({showCockpit : !this.state.showCockpit});
+  }
+
   deletePersonHandler = (personIndex) => {
     const personsArray = [...this.state.persons];
     personsArray.splice(personIndex, 1);
@@ -93,6 +98,9 @@ class App extends Component {
     
     return(
         <div className = "App">
+          <button onClick = {this.toggleCockpit}>
+            Hide Cockpit
+          </button>
           <h1>Hello, React App</h1>
           
           {/* {
@@ -111,11 +119,14 @@ class App extends Component {
                 age = {this.state.Person[2].age}/> 
             </div>: null
           } */}
-            <Cockpit 
-              showPersons={this.state.showPerson}
-              persons={this.state.persons}
-              clicked={this.togglePersonHandler}
-            />
+          {
+              this.state.showCockpit ?
+              <Cockpit 
+                showPersons={this.state.showPerson}
+                persons={this.state.persons}
+                clicked={this.togglePersonHandler}
+              /> : null
+            }
             {person}
 
         </div>
