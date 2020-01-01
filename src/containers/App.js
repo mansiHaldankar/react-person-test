@@ -98,9 +98,6 @@ class App extends Component {
     
     return(
         <div className = "App">
-          <button onClick = {this.toggleCockpit}>
-            Hide Cockpit
-          </button>
           <h1>Hello, React App</h1>
           
           {/* {
@@ -119,13 +116,16 @@ class App extends Component {
                 age = {this.state.Person[2].age}/> 
             </div>: null
           } */}
+          <button onClick = {this.toggleCockpit}>
+            Hide Cockpit
+          </button>
           {
               this.state.showCockpit ?
               <Cockpit 
                 showPersons={this.state.showPerson}
-                persons={this.state.persons}
+                personsLength={this.state.persons.length}
                 clicked={this.togglePersonHandler}
-              /> : null
+              />: null
             }
             {person}
 
